@@ -1,0 +1,153 @@
+{
+  "theme": "dark",
+  "typography": {
+    "heading_font": "Unbounded",
+    "body_font": "Outfit",
+    "scale": {
+      "h1": "text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none",
+      "h2": "text-4xl md:text-6xl font-black tracking-tighter leading-none",
+      "h3": "text-2xl md:text-3xl font-bold tracking-tight",
+      "body_large": "text-lg md:text-xl font-light leading-relaxed",
+      "body": "text-base font-light leading-relaxed",
+      "caption": "text-xs md:text-sm uppercase tracking-[0.2em] font-medium"
+    },
+    "rules": [
+      "NO Space Grotesk allowed.",
+      "Headings MUST use tight tracking (tracking-tighter) and never be centered by default.",
+      "Use 'font-black' for primary titles to evoke a heavy, brutalist premium feel.",
+      "Language is Bahasa Indonesia. Ensure copy flow feels editorial."
+    ]
+  },
+  "colors": {
+    "background": {
+      "primary": "#05050A",
+      "secondary": "#0A0A12",
+      "surface": "#11111A",
+      "overlay": "rgba(5, 5, 10, 0.7)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B"
+    },
+    "accent": {
+      "primary": "#00F0FF",
+      "secondary": "#39FF14",
+      "border": "rgba(255, 255, 255, 0.1)"
+    },
+    "rules": [
+      "The entire site is dark mode futuristic.",
+      "Use a deep void black background with a subtle indigo/blueish tint (#05050A).",
+      "NEVER use generic full-screen gradients. Use pure dark backgrounds overlaid with grain texture.",
+      "Accents should be used sparingly for hover states or tiny technical details, not as huge background blocks."
+    ]
+  },
+  "visual_enhancers": {
+    "textures": "Apply a subtle SVG noise/grain overlay across the entire site to kill digital flatness.",
+    "borders": "Use precise 1px borders with 10% white opacity (border-white/10) to define grids and bento structures.",
+    "glow": "Use soft, restricted drop-shadows (e.g., cyan or white glow) only on hover for interactive elements."
+  },
+  "components": [
+    {
+      "name": "Navigation",
+      "description": "Glassmorphic header.",
+      "style": "fixed top-0 w-full z-50 backdrop-blur-xl bg-[#05050A]/70 border-b border-white/10. Include Logo and minimal links."
+    },
+    {
+      "name": "Kinetic Hero",
+      "description": "Awwwards-worthy kinetic typography reveal.",
+      "style": "h-screen flex items-center relative overflow-hidden. Text lines masked (overflow-hidden) with text translating Y from 100% to 0 on load. Parallax 3D background behind with 30% opacity."
+    },
+    {
+      "name": "Marquee",
+      "description": "Slow editorial moving text strip.",
+      "style": "react-fast-marquee or CSS animation. Text is text-transparent with 1px stroke (-webkit-text-stroke: 1px rgba(255,255,255,0.2)). Content: 'ELASTECH PRODUCTION • SAAS • IOT • WEB DEVELOPMENT'."
+    },
+    {
+      "name": "Manifesto Chapters",
+      "description": "Numbered philosophy sections.",
+      "style": "Grid columns. Huge outline numbers ('01', '02'). Body text right-aligned. High contrast borders."
+    },
+    {
+      "name": "Services Section",
+      "description": "Showcase of SAAS, IoT, Website Development.",
+      "style": "Bento grid or asymmetrical cards. Use 'clipped frames' - containers with overflow-hidden where the image scales up on hover. Pure black cards with border-white/10."
+    },
+    {
+      "name": "Portfolio Grid",
+      "description": "Spotlight product photography.",
+      "style": "Masonry or asymmetrical grid. Dark overlaid images that reveal full brightness on hover."
+    },
+    {
+      "name": "Stats & Testimonials",
+      "description": "Credibility block.",
+      "style": "Huge typography for stats (e.g., '500+', '99.9%'). Testimonials use a clean cardless layout with star ratings in the accent color."
+    },
+    {
+      "name": "Contact Form",
+      "description": "Dummy form using customized Shadcn components.",
+      "style": "Inputs with bg-transparent, border-white/10, focus:border-white. Minimal, technical look."
+    }
+  ],
+  "grids": {
+    "bento": "grid-cols-1 md:grid-cols-12 gap-8 for asymmetrical storytelling. E.g., span 8 columns for image, 4 for text.",
+    "standard": "grid-cols-1 md:grid-cols-3 gap-6 for services and stats."
+  },
+  "layouts": {
+    "spacing": "Exaggerated. Use p-12 or p-16 inside large cards. py-32 for section separation.",
+    "alignment": "Strict left-alignment for body text. Break symmetry frequently."
+  },
+  "motion": {
+    "scroll": "MANDATORY: Use '@studio-freight/lenis' for smooth momentum scrolling. This creates the 'Awwwards' feel.",
+    "reveal": "Use framer-motion for whileInView scroll reveals. Stagger children with y: 40, opacity: 0 to y: 0, opacity: 1.",
+    "hero_text": "Split text into lines. Wrap each in overflow-hidden. Animate inner element from y: 100% to 0 with a custom cubic-bezier ease.",
+    "parallax": "Apply useScroll and useTransform from framer-motion to the hero background image for a subtle parallax effect."
+  },
+  "accessibility": {
+    "contrast": "Ensure all text meets 4.5:1 ratio. Put gradient overlays on images to protect text.",
+    "testing": "All interactive elements MUST include data-testid (e.g., data-testid='hero-cta', data-testid='contact-submit').",
+    "transparency": "DO NOT use fully transparent backgrounds under text."
+  },
+  "media": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1625014618427-fbc980b974f5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAxODF8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGZ1dHVyaXN0aWMlMjBkYXJrJTIwM0QlMjBuZXR3b3JrfGVufDB8fHx8MTc4NDcwMjU1Mnww&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract futuristic dark 3D network ball. Use as hero background."
+    },
+    "service_iot": {
+      "url": "https://images.pexels.com/photos/16423102/pexels-photo-16423102.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Smart home / IoT device. Use in the IoT Service card."
+    },
+    "service_saas": {
+      "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5JTIwc2FhcyUyMGRhc2hib2FyZCUyMGRhcmt8ZW58MHx8fHwxNzg0NzAyNTUyfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Cybersecurity SAAS Dashboard. Use in the SAAS Service card."
+    },
+    "service_web": {
+      "url": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxwcmVtaXVtJTIwbGFwdG9wJTIwbW9ja3VwJTIwZGFya3xlbnwwfHx8fDE3ODQ3MDI1NTJ8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Premium dark laptop mockup. Use in the Web Development Service card."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Build a high-end, Awwwards-worthy landing page for 'ELASTECH PRODUCTION'. Content language is Bahasa Indonesia.",
+    "Implement Lenis for momentum scrolling (install @studio-freight/lenis).",
+    "Implement framer-motion for the kinetic hero line reveal, section scroll reveals, and a parallax image moment in the hero.",
+    "Use Google Fonts: 'Unbounded' (Display) and 'Outfit' (Body). Add to Tailwind theme.",
+    "Create a custom animated cursor component that tracks mouse position.",
+    "Use raw HTML/Tailwind for the complex asymmetrical grids. Use Shadcn ONLY for the contact form inputs/buttons.",
+    "Add a fixed global noise texture (mix-blend-mode overlay or low opacity) to give it an editorial, non-digital feel.",
+    "Ensure the hero has a 3D/Parallax feel using framer-motion and the hero_background image.",
+    "Create the editorial Marquee using framer-motion or CSS."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Do not use dark colors as gradients. Dark themes require solid, rich blacks and grays with subtle grain.",
+    "Don't make generic centered layouts. Exploit asymmetrical grids.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "You MUST NOT apply universal transition (transition: all). Use specific properties.",
+    "You MUST NOT center align the app container (.App { text-align: center; }).",
+    "Always use modern button styles (sharp corners or pill, with glowing/technical hover states).",
+    "NEVER use Emoji characters for icons. Use lucide-react.",
+    "Every interaction needs micro-animations - hover states, scale effects inside clipped frames.",
+    "Use 2-3x more spacing than feels comfortable. Let the typography and negative space do the work.",
+    "Add 'data-testid' attributes to all interactive elements."
+  ]
+}

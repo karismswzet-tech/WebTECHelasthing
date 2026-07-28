@@ -2,23 +2,28 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
 import { MaskLine } from "./Reveal";
+import { api, formatApiError } from "@/lib/api";
 
 export const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
   const [sending, setSending] = useState(false);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Mohon lengkapi nama, email, dan pesan.");
       return;
     }
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    try {
+      await api.post("/contact", form);
       toast.success("Pesan terkirim. Kami akan menghubungi Anda dalam 24 jam.");
       setForm({ name: "", email: "", company: "", message: "" });
-    }, 900);
+    } catch (err) {
+      toast.error(formatApiError(err.response?.data?.detail) || "Gagal mengirim pesan.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const field = (label, key, type = "text", tag = "input") => {

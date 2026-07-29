@@ -86,7 +86,25 @@ export const Contact = () => {
             <div className="mt-16 grid grid-cols-2 gap-6 max-w-md">
               <div>
                 <div className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">Email</div>
-                <div className="font-mono text-sm text-white/80">halo@elastech.id</div>
+                <a
+                  href="mailto:admin@elastech.pro"
+                  data-testid="contact-email-link"
+                  className="font-mono text-sm text-white/80 hover:text-acid-cyan transition-colors"
+                >
+                  admin@elastech.pro
+                </a>
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">WhatsApp</div>
+                <a
+                  href="https://wa.me/6285286041768"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="contact-whatsapp-link"
+                  className="font-mono text-sm text-white/80 hover:text-acid-cyan transition-colors"
+                >
+                  0852-8604-1768
+                </a>
               </div>
               <div>
                 <div className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">Studio</div>

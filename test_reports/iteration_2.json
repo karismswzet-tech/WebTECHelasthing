@@ -1,0 +1,25 @@
+{
+  "summary": "Regression verification after production URL/env refactor (frontend/src/lib/api.js now uses REACT_APP_API_URL or same-origin '/api' fallback; no REACT_APP_BACKEND_URL reference). Backend pytest suite 14/14 pass. Playwright E2E flows all pass on preview URL (same-origin /api routing): contact form submits successfully and clears, empty submit triggers validation, wrong admin password stays on login (401 logged via new console.error interceptor), correct login redirects to /admin, dashboard lists newest-first, detail drawer opens & marks read, delete removes submission, unauth /admin redirects to /admin/login, submit buttons are disabled while request in-flight on both contact form and admin login. New retry+timeout+error-logging behavior in api.js verified via console output.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/backend/tests/test_elastech.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "api.js correctly avoids hardcoded URLs and drives base from env; falls back to same-origin '/api' which works for both preview (ingress routes /api -> backend) and production (elastech.pro). Good.",
+    "Retry logic uses simple linear backoff (400ms * retry_count) with max 2 retries — fine for transient 5xx/network, correctly excludes 4xx.",
+    "Timeout 20s is appropriate for form submits. Consider surfacing user-visible 'still working…' hint if it approaches 10s.",
+    "Existing note from iteration_1 still valid: POST /api/contact returns 200 instead of 201; no rate limiting on /api/auth/login."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "admin@elastech.id / Elastech2026! (from /app/memory/test_credentials.md)",
+  "seed_data_creation": "One TEST_PW_Regr_<ts> submission created and deleted during E2E lifecycle; a couple of older TEST_-prefixed submissions from earlier iterations remain and are harmless.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "The api.js refactor is verified working in preview. For a true production check on https://elastech.pro, run the same Playwright flows against that origin (REACT_APP_API_URL=https://elastech.pro/api will be picked up from .env.production at build time). If the user still reports 'forms don't work' on the custom domain, most likely cause is (a) build not deployed with the new .env.production, or (b) ingress on elastech.pro not routing /api to the FastAPI backend — check DNS/ingress and open browser devtools Network tab to confirm requests go to https://elastech.pro/api/contact and not to a stale preview URL.",
+  "rca of the issue": "Original user-reported bug ('forms don't work on elastech.pro') was caused by hardcoded/env-mismatched API base URL in the previous api.js. Refactored api.js now resolves API base purely from process.env.REACT_APP_API_URL (set to https://elastech.pro/api in .env.production) with a same-origin '/api' fallback for preview. Regression tests confirm no side-effects in preview; production fix depends on redeploying frontend with the new .env.production bundle."
+}
